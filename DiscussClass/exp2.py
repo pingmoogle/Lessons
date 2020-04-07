@@ -5,8 +5,6 @@ import binascii
 import sys
 
 # Task 1
-
-
 def generateToken(L):
     return int.from_bytes(binascii.hexlify(secrets.token_bytes(L)), 'big')
 
@@ -17,7 +15,6 @@ def generateStrBin(s):
     for i in s:
         binStr = binStr + bin(ord(i))[2:].zfill(16)
     return binStr
-
 
 def encodeString(strPlain):
     token = generateToken(len(strPlain))
@@ -33,6 +30,7 @@ def encodeString(strPlain):
     return [int(tokenBin, base=2), strCipher]
 
 
+# Task 3
 def decodeString(token, strCipher):
     tokenBin = bin(token)[2::].zfill(len(strCipher))
     strPlainDecode = ''
@@ -51,6 +49,7 @@ def decodeString(token, strCipher):
     return strFinal
 
 
+# Task 4
 def stringTest():
     string1 = "路漫漫其修远兮，吾将上下而求索。"
     string2 = "Never put off until tomorrow what may be done today."
@@ -70,6 +69,7 @@ def stringTest():
     print(result_4)
 
 
+# Task 5
 def encodeFile(filePath):
     try:
         with open(filePath, 'r', encoding='UTF-8') as f:
@@ -84,7 +84,6 @@ def encodeFile(filePath):
     finally:
         pass
 
-
 def decodeFile(filePath, token):
     try:
         with open(filePath, 'r', encoding='UTF-8') as f:
@@ -98,6 +97,7 @@ def decodeFile(filePath, token):
         print("Can't open the file: " + filePath)
     finally:
         pass
+
 
 
 if __name__ == "__main__":
