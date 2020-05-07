@@ -197,10 +197,13 @@ void Des_SetKey(const char key[8])
 int main() {
     char key[8] = "hapynew";
     char str[8] = "Waitwai";
+    std::cout<<"Plain Text: "<<str;
+    char result[100] = "";
+    char result2[100] = "";
     Des_SetKey(key);
-    Des_Run(str,str,ENCRYPT);
-    std::cout<<"\nEncrypt Result: "<<str;
-    Des_Run(str,str,DECRYPT);
-    std::cout<<"\nDecrypt Result: "<<str;
+    Des_Run(result,str,ENCRYPT);
+    std::cout<<"\nEncrypt Result: "<<result;
+    Des_Run(result2,result,DECRYPT);
+    std::cout<<"\nDecrypt Result: "<<result2;
     return 0;
 }
