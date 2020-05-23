@@ -2,4 +2,9 @@
     <string name="app_name">EdgeLibrary</string>
     <string name="title">输入关键词即可开始查询</string>
     <string name="go">Go!</string>
+    <string name="waiting">正在加载 ... ...</string>
+    <string name="loadfailed">加载失败，请检查网络连接</string>
+    <string name="bookpicture">BookPicture</string>
+    <string name="detailsActivity">Details 详情</string>
+    <string name="sharesays">我找到了一本好书，你也快来一起看一看吧！</string>
 </resources>
