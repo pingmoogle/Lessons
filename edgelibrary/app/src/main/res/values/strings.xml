@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">EdgeLibrary</string>
+    <string name="title">输入关键词即可开始查询</string>
+    <string name="go">Go!</string>
+</resources>
