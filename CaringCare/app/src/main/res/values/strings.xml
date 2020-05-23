@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">CaringCare</string>
+    <string name="mainTip">请小心驾驶</string>
+    <string name="carsIcon">🚗🚓🚕🚙🚐🛴🛵</string>
+    <string name="openTip">应用将在检测到您出现撞击时自动报警</string>
+</resources>
