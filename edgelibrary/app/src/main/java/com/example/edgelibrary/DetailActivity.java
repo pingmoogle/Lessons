@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.ImageView;
 import android.view.ActionProvider;
+import androidx.appcompat.widget.Toolbar;
 
 
 import androidx.annotation.NonNull;
@@ -26,11 +27,10 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        requestWindowFeature(Window.FEATURE_CONTEXT_MENU);
         setContentView(R.layout.activity_detail);
-//        getWindow().setFeatureInt(Window.FEATURE_CONTEXT_MENU,R.menu.main);
-//        getActionBar().setDisplayHomeAsUpEnabled(true);
         imageView = (ImageView) findViewById(R.id.bookimg);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         String coverID = this.getIntent().getExtras().getString("coverID");
         if(coverID.length()>0){
@@ -40,6 +40,8 @@ public class DetailActivity extends AppCompatActivity {
         }
     }
     private void setShareP(){
+        shareP = new ShareActionProvider(this);
+        // ???
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
@@ -53,15 +55,12 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
-        MenuItem shareItem = menu.findItem(R.id.menu_item_share);
-        if(shareItem!=null){
-            shareP = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
-        }
+
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
             case R.id.menu_item_share:
                 setShareP();
