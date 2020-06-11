@@ -1,10 +1,22 @@
 /**
+ * 踩坑大全：
+ * 一、
  * android-async-http 已经停止维护，并且httpClient在Android 5 以上版本已经停用
- * http 将逐渐被淘汰，因此使用更安全的https 方法来进行网络连接
+ * httpURLConnection 也基本被淘汰了
+ * http 将逐渐被淘汰，因此需要使用更安全的https 方法来进行网络连接
  * 使用了google推荐的volley 来进行https请求
- * 另外，OpenLibrary 需要国外代理才能打开
+ * 二、
+ * OpenLibrary 需要国外代理才能打开
+ * 因此，如果遇到了Timeout之类的错误，请首先检查网络连接，再给代码debug
+ * 三、
  * FEATURE_INDETERMINATE_PROGRESS 这一Windows feature 从Android 7 之后不再使用
- * 更改为text提示语
+ * 操作进度，更改为text提示语
+ * 四、
+ * Actionbar和menu的相关特征，在Android 7之后被大改
+ * 添加菜单和Toolbar按钮，建议参看官方文档
+ * 五、
+ * 虽然导入v7也行，但还是建议
+ * 尽量使用jetbrains提供的Androidx模块
  */
 
 package com.example.edgelibrary;
@@ -39,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
     JSONAdapter mJSAD;
 
     private void Searchbooks(String quarryURL) throws UnsupportedEncodingException {
+        // 定义了查询图书的方法
+        // 创建https连接
         final String quarryHead = "https://openlibrary.org/search.json?q=";
         String urlString = URLEncoder.encode(quarryURL, "UTF-8");
         String url = quarryHead + urlString;
@@ -61,10 +75,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         queue.add(mj);
-    }
-
-    private void checkPermission(){
-        //TODO: permission check
     }
 
     @Override
